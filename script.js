@@ -1,16 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("ranking.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const ticker = document.getElementById("ticker");
-      if (!ticker) return console.error("ticker要素が見つかりません");
+fetch("ranking.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const ticker = document.getElementById("ticker");
+    if (!ticker) {
+      console.error("ticker が見つかりません");
+      return;
+    }
 
-      // HTMLに変換
-      ticker.innerHTML = data.map(item =>
-        `<a href="${item.link}" target="_blank">${item.title}</a>`
-      ).join(" ／ ");
-    })
-    .catch((err) => {
-      console.error("ランキング取得失敗:", err);
+    const items = data.map(item => {
+      return `<a href="${item.url}" target="_blank">${item.rank}位: ${item.title}</a>`;
     });
-});
+
+    ticker.innerHTML = items.join(" ／ ");
+  })
+  .catch((error) => {
+    console.error("ランキング取得失敗:", error);
+  });
