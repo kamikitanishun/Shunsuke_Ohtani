@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // HTMLをリンク付きで生成
       ticker.innerHTML = data
         .map(item => `<a href="${item.link}" target="_blank">${item.title}</a>`)
         .join(" ／ ");
