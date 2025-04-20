@@ -16,11 +16,14 @@ for row in rows:
     rank_tag = row.select_one("div.rank_no")
     title_tag = row.select_one("dt.work_name a")
     if rank_tag and title_tag:
-        rank = rank_tag.get_text(strip=True)
         title = title_tag.get_text(strip=True)
-        ranking.append(f"{rank}位: {title}")
+        url = "https://www.dlsite.com" + title_tag["href"]
+        ranking.append({
+            "title": title,
+            "link": url
+        })
         count += 1
-    if count >= 5:
+    if count >= 10:
         break
 
 with open("ranking.json", "w", encoding="utf-8") as f:
