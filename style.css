@@ -14,31 +14,31 @@
   }
   
   /* ランキングティッカー */
-  .ticker-wrapper {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    border-bottom: 1px solid #ccc;
-    background: #fff;
-  }
-  
-  .ticker {
-    display: inline-block;
-    padding: 10px 0;
-    animation: scroll 180s linear infinite;
-    font-size: 2rem; /* 中央のリンクと同じサイズ */
-    color: #000;
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
+.ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: #000;
+  color: #fff;
+}
+
+.ticker {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.ticker a {
+  margin-right: 3em;
+  color: #0ff;
+  text-decoration: none;
+}
+
   /* 中央メニュー */
   .container {
     flex-grow: 1;
