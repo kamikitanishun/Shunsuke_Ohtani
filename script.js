@@ -1,10 +1,9 @@
-fetch("ranking.json")
-  .then((res) => res.json())
-  .then((data) => {
-    const rankingText = data.join(" / ");
-    document.getElementById("ranking-text").textContent = rankingText;
+fetch('ranking.json')
+  .then(res => res.json())
+  .then(data => {
+    const ticker = document.getElementById("ticker");
+    ticker.textContent = data.join(" ／ ");
   })
-  .catch((err) => {
+  .catch(err => {
     console.error("ランキング取得失敗:", err);
-    document.getElementById("ranking-text").textContent = "ランキング取得に失敗しました";
   });
