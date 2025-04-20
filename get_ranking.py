@@ -22,19 +22,17 @@ for row in rows:
     if rank_tag and title_tag:
         rank = rank_tag.get_text(strip=True)
         title = title_tag.get_text(strip=True)
-        link = title_tag.get("href")
-        if not link.startswith("http"):
-            link = "https://www.dlsite.com" + link
+        href = title_tag.get("href")
+        full_url = "https://www.dlsite.com" + href if href.startswith("/") else href
 
         ranking.append({
             "title": f"{rank}位: {title}",
-            "link": link
+            "link": full_url
         })
 
         count += 1
-        if count >= 10:
+        if count >= 5:
             break
 
-# JSONとして保存
 with open("ranking.json", "w", encoding="utf-8") as f:
     json.dump(ranking, f, ensure_ascii=False, indent=2)
