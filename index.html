@@ -3,41 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ポートフォリオ</title>
+  <title>Portfolio</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: #000;
-      color: #fff;
+      background: #fff; /* 白背景 */
+      color: #000;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      flex-direction: column;
     }
 
     .menu {
-      font-size: 2rem;
       text-align: center;
-      z-index: 10;
+      font-size: 2rem;
     }
 
     .menu a {
       display: block;
       margin: 1rem 0;
-      color: #0ff;
+      color: #007bff;
       text-decoration: none;
     }
 
     .ticker-wrapper {
-      position: absolute;
+      position: fixed;
       top: 0;
       width: 100%;
       overflow: hidden;
-      background: #111;
+      background: #f0f0f0;
       white-space: nowrap;
-      border-bottom: 1px solid #444;
+      border-bottom: 1px solid #ccc;
+      padding: 0.5em 0;
     }
 
     .ticker {
@@ -47,9 +47,9 @@
     }
 
     .ticker a {
-      color: #0ff;
-      margin-right: 3em;
+      margin-right: 2em;
       text-decoration: none;
+      color: #e91e63;
     }
 
     @keyframes scroll {
@@ -59,19 +59,18 @@
   </style>
 </head>
 <body>
-  <!-- ⭐ ランキングスクロールバー -->
+  <!-- DLsiteランキング表示 -->
   <div class="ticker-wrapper">
-    <div id="ticker" class="ticker"></div>
+    <div id="ticker" class="ticker">読み込み中...</div>
   </div>
 
-  <!-- ⭐ メインメニュー -->
+  <!-- 中央メニュー -->
   <div class="menu">
     <a href="#about">About</a>
     <a href="#works">Works</a>
     <a href="#links">Links</a>
   </div>
 
-  <!-- ⭐ スクリプトの読み込み（必ず body の最後に） -->
   <script src="script.js"></script>
 </body>
 </html>
