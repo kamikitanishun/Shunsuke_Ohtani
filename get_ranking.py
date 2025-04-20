@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 
 url = "https://www.dlsite.com/maniax/ranking/day/=/date/30d/category/voice"
 headers = {
@@ -12,8 +11,7 @@ soup = BeautifulSoup(response.content, "html.parser")
 
 rows = soup.select("table#ranking_table tr")
 
-ranking = []
-count = 0
+results = []
 
 for row in rows:
     rank_tag = row.select_one("div.rank_no")
@@ -22,17 +20,19 @@ for row in rows:
     if rank_tag and title_tag:
         rank = rank_tag.get_text(strip=True)
         title = title_tag.get_text(strip=True)
-        href = title_tag.get("href")
-        full_url = "https://www.dlsite.com" + href if href.startswith("/") else href
+        url = title_tag['href']
+        full_url = "https://www.dlsite.com" + url
 
-        ranking.append({
-            "title": f"{rank}位: {title}",
-            "link": full_url
+        results.append({
+            "rank": rank,
+            "title": title,
+            "url": full_url
         })
 
-        count += 1
-        if count >= 10:
-            break
+    if len(results) >= 10:
+        break
 
+# JSONファイルに保存
+import json
 with open("ranking.json", "w", encoding="utf-8") as f:
-    json.dump(ranking, f, ensure_ascii=False, indent=2)
+    json.dump(results, f, ensure_ascii=False, indent=2)
