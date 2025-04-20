@@ -2,38 +2,76 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ポートフォリオ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .menu {
+      font-size: 2rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .menu a {
+      display: block;
+      margin: 1rem 0;
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    .ticker-wrapper {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+      background: #111;
+      white-space: nowrap;
+      border-bottom: 1px solid #444;
+    }
+
+    .ticker {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 40s linear infinite;
+    }
+
+    .ticker a {
+      color: #0ff;
+      margin-right: 3em;
+      text-decoration: none;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
 <body>
-  <!-- ランキングティッカー -->
-  <div class="ticker-wrapper">
-    <div class="ticker">
-      <span id="ranking-text">読み込み中...</span>
-    </div>
-  </div>
-  
-  <body>
+  <!-- ⭐ ランキングスクロールバー -->
   <div class="ticker-wrapper">
     <div id="ticker" class="ticker"></div>
   </div>
 
-  <script src="script.js"></script>
-</body>
-
-
-  <!-- メインUI -->
-  <div class="container">
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
-        <li><a href="#links">Links</a></li>
-      </ul>
-    </nav>
+  <!-- ⭐ メインメニュー -->
+  <div class="menu">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+    <a href="#links">Links</a>
   </div>
 
+  <!-- ⭐ スクリプトの読み込み（必ず body の最後に） -->
   <script src="script.js"></script>
 </body>
 </html>
