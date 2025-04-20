@@ -31,7 +31,7 @@ for row in rows:
         })
 
         count += 1
-        if count >= 5:
+        if count >= 10:
             break
 
 with open("ranking.json", "w", encoding="utf-8") as f:
