@@ -1,0 +1,33 @@
+name: Update DLsite Ranking
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 毎日0時（JSTで9時）に実行
+  workflow_dispatch:    # 手動実行も可能
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: リポジトリをクローン
+        uses: actions/checkout@v3
+
+      - name: Pythonをセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 必要なパッケージをインストール
+        run: pip install requests beautifulsoup4
+
+      - name: Pythonスクリプトを実行
+        run: python get_ranking.py
+
+      - name: 変更をコミット & プッシュ
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add ranking.json
+          git commit -m "🎯 Update DLsite ranking"
+          git push
