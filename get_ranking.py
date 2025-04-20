@@ -32,7 +32,7 @@ for row in rows:
         })
 
         count += 1
-        if count >= 5:
+        if count >= 10:
             break
 
 # JSONとして保存
