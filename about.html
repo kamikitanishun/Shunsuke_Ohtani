@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+
+    .content {
+      height: calc(100vh - 2em);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+      animation-delay: 0.5s;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    a.back-link {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #000;
+      border: 1px solid #000;
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      transition: background 0.3s ease;
+    }
+
+    a.back-link:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ティッカー部分（ランキング） -->
+  <div class="ticker-wrapper">
+    <div id="ticker" class="ticker">ランキング読み込み中...</div>
+  </div>
+  <div class="ticker-note">↑DLsite 音声作品(R18含)ランキング↑</div>
+
+  <!-- 中央表示のAboutセクション -->
+  <div class="content">
+    <h1>About</h1>
+    <p>
+      このサイトはポートフォリオページです。<br>
+      現在は主にWeb制作、Arduino、音声作品ランキングの表示などを行っています。<br>
+      シンプルで遊び心のあるデザインを目指しています。
+    </p>
+    <a href="index.html" class="back-link">← 戻る</a>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
