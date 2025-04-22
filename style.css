@@ -13,32 +13,80 @@
     flex-direction: column;
     align-items: center;
   }
+
+  #visualizer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: #e7e7e7; /* 明るいグレー背景 */
+    pointer-events: none; /* マウス操作をブロックしない */
+  }
+  
+  
   
   /* ランキングティッカー */
-.ticker-wrapper {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  background: #000;
-  color: #000;
-}
+  .ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background: #000;
+    color: #000;
+  }
 
-.ticker {
-  display: inline-block;
-  animation: scroll 30s linear infinite;
-}
+  .ticker {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+  }
 
-@keyframes scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
 
-.ticker a {
-  margin-right: 3em;
-  color: #0ff;
-  text-decoration: none;
-}
+  .ticker a {
+    margin-right: 3em;
+    color: #0ff;
+    text-decoration: none;
+  }
+
+  /* 共通ホバーアニメーション */
+  .rank-link {
+    display: inline-block;
+    margin-right: 2em;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .rank-link:hover {
+    transform: scale(1.1);
+    color: #ff4081;
+  }
+
+  /* 順位ごとの色装飾 */
+  .rank-1 { color: gold; }
+  .rank-2 { color: silver; }
+  .rank-3 { color: #cd7f32; }
+  .rank-4 { color: #888; }
+  .rank-5 { color: #666; }
+
+  
+  
+
+  /*天気と時刻の表示*/
+  .weather-display {
+    position: fixed;
+    top: 2em;
+    right: 1em;
+    font-size: 1.2rem;
+    color: #111;
+    z-index: 1000;
+    font-weight: bold;
+  }
+  
 
 
 
@@ -131,9 +179,10 @@
     100% { transform: translateX(-100%); }
   }
 
+  /*ティッカーの説明*/
   .ticker-note {
     position: fixed;
-    top: 3em; /* ティッカーの直下に表示 */
+    top: 3.6em; /* ティッカーの直下に表示 */
     left: 0;
     width: 100%;
     font-size: 0.75rem;
@@ -183,7 +232,7 @@
     color: #333;
     text-align: center;
   }
-  
+
   .hidden {
     display: none;
   }

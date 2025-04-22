@@ -6,12 +6,14 @@ fetch("ranking.json")
     if (!ticker) throw new Error("ticker element not found");
 
     ticker.innerHTML = data.map(item => {
-      return `<a href="${item.url}" target="_blank">${item.rank}位: ${item.title}</a>`;
-    }).join(" / ");
+      return `<a class="rank-link rank-${item.rank}" href="${item.url}" target="_blank">${item.rank}位: ${item.title}</a>`;
+    }).join(" ");
   })
   .catch(error => {
     console.error("ランキング取得失敗:", error);
   });
+
+
 
 // メニューリンクに点滅アニメーションを加えてから遷移
 document.querySelectorAll('.menu a').forEach(link => {
@@ -63,4 +65,15 @@ window.addEventListener("DOMContentLoaded", () => {
   ticker.style.animationDelay = `-${progress * duration}ms`;
 });
 
+async function fetchWeather(forceRefresh = false) {
+  const weatherInfo = document.getElementById("weather-info");
 
+  const saved = JSON.parse(localStorage.getItem("weatherData"));
+  const now = Date.now();
+
+  // 10分以上経ってる or 強制リフレッシュ時は再取得
+  if (!forceRefresh && saved && now - saved.timestamp < 10 * 60 * 1000) {
+      weatherInfo.textContent = saved.display;
+      return;
+  }
+}

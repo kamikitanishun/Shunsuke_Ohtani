@@ -6,12 +6,24 @@
   <title>Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <canvas id="visualizer"></canvas>
+
   <!-- DLsiteランキング表示 -->
   <div class="ticker-wrapper">
-    <div id="ticker" class="ticker">読み込み中...</div>
+    <div class="ticker" id="ticker">
+      <!-- JavaScriptで生成されるランキング -->
+      読み込み中...
+    </div>
   </div>
-  <div class="ticker-note">↑特に書くこともないので、DLsite 音声作品(R18含)ランキング↑</div>
+  <div class="ticker-note">
+    ↑特に書くこともないので、DLsite 音声作品(R18含)ランキング↑
+  </div>
+
+  <!-- 天気と時刻の表示 -->
+  <div id="weather-info" class="weather-display">読み込み中...</div>
+  <script src="weather.js"></script>
 
   <!-- 中央メニュー -->
   <div class="menu">
@@ -20,6 +32,8 @@
     <a href="#links">Links</a>
   </div>
 
+  <!-- スクリプト -->
   <script src="script.js"></script>
+  <script src="visualizer.js"></script>
 </body>
 </html>

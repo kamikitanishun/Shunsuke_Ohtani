@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <style>
 
-
-
     .content {
       height: calc(100vh - 2em);
       display: flex;
@@ -17,7 +15,7 @@
       justify-content: center;
       text-align: center;
       opacity: 0;
-      animation: fadeIn 2s ease-in forwards;
+      animation: fadeIn 1.2s ease-in forwards;
       animation-delay: 0.5s;
     }
 
@@ -55,12 +53,25 @@
     }
   </style>
 </head>
+
+
+
 <body>
-  <!-- ティッカー部分（ランキング） -->
+
+    <canvas id="visualizer"></canvas>
+
+  <!-- DLsiteランキング表示 -->
   <div class="ticker-wrapper">
-    <div id="ticker" class="ticker">ランキング読み込み中...</div>
+    <div class="ticker" id="ticker">
+      <!-- JavaScriptで生成されるランキング -->
+      読み込み中...
+    </div>
   </div>
   <div class="ticker-note">↑DLsite 音声作品(R18含)ランキング↑</div>
+
+  <!-- 天気と時刻の表示 -->
+  <div id="weather-info" class="weather-display">読み込み中...</div>
+  <script src="weather.js"></script>
 
   <!-- 中央表示のAboutセクション -->
   <div class="content">
@@ -74,6 +85,6 @@
   </div>
 
   <script src="script.js"></script>
-
+  <script src="visualizer.js"></script>
 </body>
 </html>
