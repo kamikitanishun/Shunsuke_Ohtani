@@ -4,65 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f0f0f0; /* 白背景 */
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .menu {
-      text-align: center;
-      font-size: 2rem;
-    }
-
-    .menu a {
-      display: block;
-      margin: 1rem 0;
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .ticker-wrapper {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      overflow: hidden;
-      background: #f0f0f0;
-      white-space: nowrap;
-      border-bottom: 1px solid #ccc;
-      padding: 0.5em 0;
-    }
-
-    .ticker {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll 40s linear infinite;
-    }
-
-    .ticker a {
-      margin-right: 2em;
-      text-decoration: none;
-      color: #e91e63;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- DLsiteランキング表示 -->
   <div class="ticker-wrapper">
     <div id="ticker" class="ticker">読み込み中...</div>
   </div>
+  <div class="ticker-note">↑特に書くこともないので、DLsite 音声作品(R18含)ランキング↑</div>
 
   <!-- 中央メニュー -->
   <div class="menu">
