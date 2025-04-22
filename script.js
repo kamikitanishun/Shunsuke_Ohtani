@@ -14,7 +14,7 @@ fetch("ranking.json?v=" + new Date().getTime())
         return `<a href="${item.url}" target="_blank">${item.rank}位: ${item.title}</a>`;
       });
 
-      ticker.innerHTML = items.join(" ／ ");
+      ticker.innerHTML = items.join(" / ");
     } else {
       ticker.innerHTML = "ランキングデータがありません";
     }
