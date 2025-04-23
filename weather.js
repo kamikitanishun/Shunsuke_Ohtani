@@ -12,14 +12,14 @@ async function fetchWeather(forceRefresh = false) {
 
     try {
         console.log("🌍 IPアドレス取得中...");
-        const ipResponse = await fetch("https://ipinfo.io/json?token=YOUR_IPINFO_TOKEN");
+        const ipResponse = await fetch("https://ipinfo.io/json?token=9c76948c8360a9");
         const ipData = await ipResponse.json();
         const [lat, lon] = ipData.loc.split(",");
         const timezone = ipData.timezone;
 
         console.log("✅ IPデータ:", ipData);
 
-        const weatherApiKey = "YOUR_OPENWEATHERMAP_API_KEY";
+        const weatherApiKey = "698f1e1b55eb15604bd14ecde2cfc7b9";
         const weatherResponse = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric&lang=ja`
         );
