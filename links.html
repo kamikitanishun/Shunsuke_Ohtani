@@ -3,53 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About</title>
+  <title>Links</title>
   <link rel="stylesheet" href="style.css">
   <style>
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    .link-item {
+      margin: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
     }
 
-    p {
-      max-width: 1200px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #333;
+    .link-content {
+      display: block;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s ease;
     }
+
+    .link-content:hover {
+      color: #c0c0c0;
+    }
+
+    .icon {
+      width: 25px;
+      height: 25px;
+      margin-right: 0.3em;
+      object-fit: contain;
+    }
+
+    #links-container {
+      margin-top: 5em;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
 
+  <!-- 背景のビジュアライザ -->
   <canvas id="visualizer"></canvas>
 
-  <!-- DLsiteランキング表示 -->
+  <!-- ティッカー -->
   <div class="ticker-wrapper">
     <div class="ticker" id="ticker">
-      <!-- JavaScriptで生成されるランキング -->
       読み込み中...
     </div>
   </div>
   <div class="ticker-note">↑DLsite 音声作品(R18含)ランキング↑</div>
 
-  <!-- 天気と時刻の表示 -->
+  <!-- 天気・時刻 -->
   <div id="weather-info" class="weather-display">読み込み中...</div>
   <script src="weather.js"></script>
 
-  <!-- 中央表示のAboutセクション -->
+
+<!-- 中央リンク一覧 -->
   <div class="content">
-    <h1>About</h1>
-    <p>
-      大谷駿介<br>
-      高校より、マルチメディアにおいて圧倒的な才能と創造力を見せ、音楽・映像の両方で爪痕を残してきた。<br>
-      大学では情報学を専攻する一方、ハードウェアや通信といった工学分野もカバーしている。
-    </p>
+    <div id="links-container">読み込み中...</div>
     <a href="index.html" class="back-link">← 戻る</a>
   </div>
-
+   
+  <script src="links.js"></script>
   <script src="script.js"></script>
   <script src="visualizer.js"></script>
+
 </body>
 </html>

@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+/* メニューショートカット */
+    .menu {
+      text-align: center;
+      font-size: 2rem;
+      z-index: 1;
+    }
+
+    .menu a {
+      display: block;
+      margin: 1rem 0;
+      color: #000;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #c0c0c0;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -26,11 +47,14 @@
   <script src="weather.js"></script>
 
   <!-- 中央メニュー -->
-  <div class="menu">
-    <a href="about.html">About</a>
-    <a href="#works">Works</a>
-    <a href="#links">Links</a>
+  <div class="content">
+    <div class="menu">
+      <a href="about.html">About</a>
+      <a href="#works">Works</a>
+      <a href="links.html">Links</a>
+    </div>
   </div>
+
 
   <!-- スクリプト -->
   <script src="script.js"></script>
