@@ -8,7 +8,7 @@
 body {
   height: 100vh;
   background: #f0f0f0; /* 重複分統合 */
-  font-family: Helvetica, sans-serif;
+  font-family: Helvetica;
   font-weight: bold;
   color: #000;
   display: flex;
@@ -27,19 +27,6 @@ body {
   z-index: -1;
   background: #e7e7e7;
   pointer-events: none;
-}
-
-/* 共通ホバーアニメーション */
-.rank-link {
-  display: inline-block;
-  margin-right: 2em;
-  text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.rank-link:hover {
-  transform: scale(1.1);
-  color: #ff4081;
 }
 
 /* ランキングティッカー */
@@ -63,11 +50,38 @@ body {
   animation: scroll 50s linear infinite;
 }
 
+/* ティッカーのホバーアニメーション */
+.rank-link {
+  display: inline-block;
+  margin-right: 2em;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* ティッカーのホバー時の色変化*/
+.rank-link:hover {
+  transform: scale(1.1);
+  color: #ff4081 !important;
+}
+
+
+/* ティッカーの色 */
 .ticker a {
   margin-right: 2em;
-  color: #e91e63;
   text-decoration: none;
+  }
+
+  /* 順位別の色付け */
+  .rank-1 { color: gold; }
+  .rank-2 { color: silver; }
+  .rank-3 { color: #cd7f32; }
+
+  /* 6位以下は共通の色を適用 */
+  [class^="rank-"]:not(.rank-1):not(.rank-2):not(.rank-3){
+    color: #454545;
 }
+
+
 
 @keyframes scroll {
   0% { transform: translateX(0); }
