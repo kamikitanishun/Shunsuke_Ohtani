@@ -4,53 +4,138 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .link-item {
-      margin: 20px;
-      display: flex;
+    body.links-page {
+      height: auto;
+      min-height: 100vh;
+      justify-content: flex-start;
       align-items: center;
-      font-size: 2rem;
+    }
+
+    .links-content {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 50vw;
+      max-width: 960px;
+      height: auto;
+      margin: 7rem auto 5rem;
+      text-align: left;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .links-content h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      width: 100%;
+      margin-bottom: 2.25rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid #000000;
+    }
+
+    .link-item {
+      width: 100%;
     }
 
     .link-content {
-      display: block;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
       align-items: center;
+      width: 100%;
+      padding: 1.25rem 0;
       text-decoration: none;
       color: #000;
+    }
+
+    .link-title {
+      --underline-origin: 50%;
+      font-size: 1.6rem;
+      line-height: 1.25;
+      display: inline-block;
+      position: relative;
+      width: fit-content;
       transition: color 0.3s ease;
     }
 
-    .link-content:hover {
+    .link-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.08em;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: var(--underline-origin) 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .link-title:hover {
       color: #c0c0c0;
     }
 
-    .icon {
-      width: 25px;
-      height: 25px;
-      margin-right: 0.3em;
-      object-fit: contain;
+    .link-title:hover::after {
+      transform: scaleX(1);
+    }
+
+    .link-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: right;
+      color: #000000;
+    }
+
+    .link-accent-papers {
+      color: #0066cc;
+    }
+
+    .link-accent-codes {
+      color: #15803d;
+    }
+
+    .link-accent-tunes {
+      color: #d97706;
+    }
+
+    .links-content .back-link {
+      align-self: center;
+      margin-top: 3rem;
     }
 
     #links-container {
-      margin-top: 5em;
-      text-align: center;
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
+      .links-content {
+        width: min(88vw, 860px);
+      }
+
+      .links-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .link-content {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+
+      .link-description {
+        text-align: left;
+      }
     }
 
   </style>
 </head>
-<body>
+<body class="links-page">
 
   <!-- 背景のビジュアライザ -->
   <canvas id="visualizer"></canvas>
-
-  <!-- ティッカー -->
-  <div class="ticker-wrapper">
-    <div class="ticker" id="ticker">
-      読み込み中...
-    </div>
-  </div>
-  <div class="ticker-note">↑DLsite 音声作品(R18含)ランキング↑</div>
 
   <!-- 天気・時刻 -->
   <div id="weather-info" class="weather-display">読み込み中...</div>
@@ -58,12 +143,32 @@
 
 
 <!-- 中央リンク一覧 -->
-  <div class="content">
+  <div class="content links-content liquid-glass">
+    <h1>Links</h1>
     <div id="links-container">読み込み中...</div>
     <a href="index.html" class="back-link">← 戻る</a>
   </div>
    
+  <footer class="site-footer liquid-glass">© 2026 Shunsuke Otani</footer>
+
   <script src="links.js"></script>
+  <script>
+    document.addEventListener('pointermove', event => {
+      const title = event.target.closest?.('.link-title');
+      if (!title) return;
+
+      const rect = title.getBoundingClientRect();
+      const origin = ((event.clientX - rect.left) / rect.width) * 100;
+      title.style.setProperty('--underline-origin', `${origin}%`);
+    });
+
+    document.addEventListener('pointerout', event => {
+      const title = event.target.closest?.('.link-title');
+      if (!title) return;
+
+      title.style.setProperty('--underline-origin', '50%');
+    });
+  </script>
   <script src="script.js"></script>
   <script src="visualizer.js"></script>
   <script src="bgm.js" defer></script>

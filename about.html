@@ -4,48 +4,114 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    body.about-page {
+      height: auto;
+      min-height: 100vh;
+      justify-content: flex-start;
+      align-items: center;
     }
 
-    p {
-      max-width: 1200px;
-      margin: 0 auto 2rem;
+    .about-content {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 50vw;
+      max-width: 960px;
+      height: auto;
+      margin: 7rem auto 5rem;
+      text-align: left;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .about-content h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      margin-bottom: 1.75rem;
+    }
+
+    .about-content h2 {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      width: 100%;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid #000000;
+    }
+
+    .about-content p {
+      margin: 0 0 1.1rem;
       font-size: 1.1rem;
-      line-height: 1.6;
-      color: #333;
+      line-height: 1.9;
+      color: #000000;
+    }
+
+    .about-list {
+      list-style: none;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .about-list li {
+      margin-bottom: 0.45rem;
+    }
+
+    .about-content .back-link {
+      align-self: center;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-content {
+        width: min(88vw, 860px);
+      }
+
+      .about-content h1 {
+        font-size: 2.4rem;
+      }
     }
   </style>
 </head>
-<body>
+<body class="about-page">
 
   <canvas id="visualizer"></canvas>
-
-  <!-- DLsiteランキング表示 -->
-  <div class="ticker-wrapper">
-    <div class="ticker" id="ticker">
-      <!-- JavaScriptで生成されるランキング -->
-      読み込み中...
-    </div>
-  </div>
-  <div class="ticker-note">↑DLsite 音声作品(R18含)ランキング↑</div>
 
   <!-- 天気と時刻の表示 -->
   <div id="weather-info" class="weather-display">読み込み中...</div>
   <script src="weather.js"></script>
 
-  <!-- 中央表示のAboutセクション -->
-  <div class="content">
-    <h1>About</h1>
-    <p>
-      大谷駿介<br>
-      高校より、マルチメディアにおいて圧倒的な才能と創造力を見せ、音楽・映像の両方で爪痕を残してきた。<br>
-      大学では情報学を専攻する一方、ハードウェアや通信といった工学分野もカバーしている。
-    </p>
+  <!-- Aboutセクション -->
+  <div class="content about-content liquid-glass">
+    <h1>Shunsuke Otani<br>大谷 駿介</h1>
+    <p>2003年生まれ</p>
+    <p>工学院大学大学院 工学研究科 電気・電子工学専攻 修士課程在学中。情報メディア研究室にて、CHI(コンピュータヒューマンインタフェース)を研究。テーマは「DJを身近に・直感的にするインタフェースの開発」。</p>
+    <p>職業ではない、趣味としてのDJを広めることをビジョンとしている。</p>
+    <p>高校時代は写真部に所属し部長を務め、芸術的な感性を磨いた。</p>
+    <p>大学では工学院大学VRプロジェクトの主力メンバとして、数々のVRコンテンツの制作、大阪・関西万博などへのイベント出展を経験した。</p>
+
+    <h2>Career</h2>
+    <ul class="about-list">
+      <li>2003年 10月 - 東京都立川市生まれ</li>
+      <li>2022年&nbsp;&nbsp;&nbsp;3月 - 東京都立上水高等学校 [卒業]</li>
+      <li>2026年&nbsp;&nbsp;&nbsp;3月 - 工学院大学 情報学部 情報通信工学科 [卒業] (学士：工学)</li>
+      <li>2026年&nbsp;&nbsp;&nbsp;4月 - 工学院大学大学院 工学研究科 電気・電子工学専攻 修士課程</li>
+    </ul>
+
+    <h2>Awards / Exhibitions</h2>
+    <ul class="about-list">
+      <li>2019年 - 第42回東京都高等学校文化祭写真部門中央大会 入選 「緊張しているパパと一緒に」</li>
+      <li>2020年 - 第43回東京都高等学校文化祭写真部門中央大会 入選 「王者の風格」「しあわせのかたち」</li>
+      <li>2021年 - 第44回東京都高等学校文化祭写真部門中央大会 入選 「満開」「サンクス」</li>
+      <li>2021年 - 第44回東京都高等学校文化祭写真部門中央大会 最優秀賞 「満開」</li>
+      <li>2021年 - 第28回関東地区高等学校写真展 出展 「満開」</li>
+      <li>2021年 - 関東地区高校写真部 作品発表展 IN 表参道 出展 「満開」</li>
+    </ul>
+
     <a href="index.html" class="back-link">← 戻る</a>
   </div>
 

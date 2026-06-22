@@ -7,11 +7,11 @@
   // ===== 調整パラメータ =====
   const TARGET_CELL_SIZE_CSS = 12;
   const MAX_DPR = 2;
-  const STEP_FPS = 12;        // スローのまま
-  const SIM_STEPS = 2;
-  const TRAIL_FADE = 0.055;
-  const BLUR_PX = 2.2;
-  const CRISP_ALPHA = 0.22;
+  const SIM_FPS = 24;
+  const SIM_STEPS = 1;
+  const TRAIL_FADE = 0.035;
+  const BLUR_PX = 2.8;
+  const CRISP_ALPHA = 0.14;
   const BASE_ALPHA = 0.31;
 
   // 色（#005E7C）
@@ -24,6 +24,8 @@
   // 状態保存キー
   const STATE_KEY = 'rdviz_state_v2';     // ← v2 に更新（互換切替）
   const STATE_MAX_AGE_MS = 5 * 60 * 1000; // 5分
+  const SAVE_EVERY_MS = 3000;
+  const RESTORE_CATCHUP_MAX_STEPS = 24;
   const RESET = /(?:\?|&)reset=1(?:&|$)/.test(location.search);
 
   // ========= Canvas =========
@@ -75,18 +77,24 @@
   };
 
   // ====== 状態保存/復元（＋スナップショット） ======
-  function saveState() {
+  let lastSavedAt = 0;
+  function saveState(options = {}) {
     try {
       if (!A || !B || !noise) return;
-      const snap = tex.toDataURL('image/webp', 0.6); // 小さく軽い
       const payload = {
         t: Date.now(),
         cols: COLS, rows: ROWS, noisePhase,
         A: f32ToB64(A), B: f32ToB64(B), noise: f32ToB64(noise),
-        snap // ← 即時復元用
       };
+
+      if (options.includeSnap) payload.snap = tex.toDataURL('image/webp', 0.6);
+
       sessionStorage.setItem(STATE_KEY, JSON.stringify(payload));
+      lastSavedAt = Date.now();
     } catch (_) { /* 容量超などは無視 */ }
+  }
+  function saveStateThrottled() {
+    if (Date.now() - lastSavedAt >= SAVE_EVERY_MS) saveState();
   }
   function clearState(){ try{ sessionStorage.removeItem(STATE_KEY);}catch(_){} }
 
@@ -105,8 +113,19 @@
       A.set(Ar); B.set(Br); noise.set(Nr);
       noisePhase = +obj.noisePhase || 0;
       restoredSnap = obj.snap || null;
+      catchUpFromSavedTime(obj.t);
       return true;
     } catch (_) { return false; }
+  }
+
+  function catchUpFromSavedTime(savedAt) {
+    const elapsed = Math.max(0, Math.min(2, (Date.now() - savedAt) / 1000));
+    const steps = Math.min(RESTORE_CATCHUP_MAX_STEPS, Math.floor(elapsed * SIM_FPS));
+    const tsec = Date.now() / 1000;
+
+    for (let i = 0; i < steps; i++) {
+      for (let s = 0; s < SIM_STEPS; s++) simStep(1.0, tsec);
+    }
   }
 
   // ========= 初期化 =========
@@ -255,28 +274,47 @@
   }
 
   // ========= ループ =========
-  let last = 0, acc = 0, dtDraw = 1 / STEP_FPS;
+  let last = 0, simAcc = 0, simInterval = 1 / SIM_FPS;
   function frame(ts) {
+    if (document.hidden) {
+      last = ts;
+      requestAnimationFrame(frame);
+      return;
+    }
+
     if (!last) last = ts;
     let delta = (ts - last) / 1000;
     if (delta > 0.25) delta = 0.25;
-    acc += delta;
+    simAcc += delta;
 
     const tsec = ts / 1000;
-    for (let s = 0; s < SIM_STEPS; s++) simStep(1.0, tsec);
+    let guard = 0;
+    while (simAcc >= simInterval && guard < 3) {
+      for (let s = 0; s < SIM_STEPS; s++) simStep(1.0, tsec);
+      simAcc -= simInterval;
+      guard++;
+    }
 
-    if (acc >= dtDraw) { drawFrame(); acc = 0; }
+    drawFrame();
     last = ts;
+    saveStateThrottled();
     requestAnimationFrame(frame);
   }
 
   // ========= 起動 & 保存 =========
   fit();
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide', saveState);
-  window.addEventListener('beforeunload', saveState);
+  window.addEventListener('pagehide', () => saveState({ includeSnap: true }));
+  window.addEventListener('beforeunload', () => saveState({ includeSnap: true }));
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a[href]');
+    if (!link) return;
+
+    const url = new URL(link.href, location.href);
+    if (url.origin === location.origin) saveState({ includeSnap: true });
+  }, true);
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') saveState();
+    if (document.visibilityState === 'hidden') saveState({ includeSnap: true });
   });
   if (RESET) clearState();
 })();

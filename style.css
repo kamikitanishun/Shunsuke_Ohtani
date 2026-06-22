@@ -8,8 +8,8 @@
 body {
   height: 100vh;
   background: #f0f0f0; /* 重複分統合 */
-  font-family: Helvetica;
-  font-weight: bold;
+  font-family: "LINE Seed JP", Helvetica, sans-serif;
+  font-weight: 700;
   color: #000;
   display: flex;
   flex-direction: column;
@@ -29,93 +29,59 @@ body {
   pointer-events: none;
 }
 
-/* ランキングティッカー */
-.ticker-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
   overflow: hidden;
-  white-space: nowrap;
-  background: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-  padding: 0.3em 0;
-  box-sizing: border-box;
-  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.16) 28%, transparent 48%),
+    radial-gradient(circle at 85% 78%, rgba(255, 255, 255, 0.34), transparent 38%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(240, 240, 240, 0.18) 48%, rgba(255, 255, 255, 0.30));
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -18px 34px rgba(255, 255, 255, 0.16),
+    0 18px 55px rgba(0, 0, 0, 0.12);
 }
 
-.ticker {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll 50s linear infinite;
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.42) 18%, transparent 34%),
+    radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.62), transparent 42%),
+    radial-gradient(ellipse at bottom right, rgba(0, 0, 0, 0.08), transparent 46%);
+  opacity: 0.78;
+  pointer-events: none;
 }
 
-/* ティッカーのホバーアニメーション */
-.rank-link {
-  display: inline-block;
-  margin-right: 2em;
-  text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
+.liquid-glass::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    inset 18px 18px 42px rgba(255, 255, 255, 0.18),
+    inset -18px -18px 38px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
 }
 
-/* ティッカーのホバー時の色変化*/
-.rank-link:hover {
-  transform: scale(1.1);
-  color: #ff4081 !important;
+.liquid-glass > * {
+  position: relative;
+  z-index: 1;
 }
 
-
-/* ティッカーの色 */
-.ticker a {
-  margin-right: 2em;
-  text-decoration: none;
-  }
-
-  /* 順位別の色付け */
-  .rank-1 { color: gold; }
-  .rank-2 { color: silver; }
-  .rank-3 { color: #cd7f32; }
-
-  /* 6位以下は共通の色を適用 */
-  [class^="rank-"]:not(.rank-1):not(.rank-2):not(.rank-3){
-    color: #454545;
-}
-
-
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-/* 順位ごとの色装飾 */
-.rank-1 { color: rgb(180, 153, 0); }
-.rank-2 { color: rgb(100, 100, 100); }
-.rank-3 { color: #cd7f32; }
-.rank-4 { color: #888; }
-.rank-5 { color: #666; }
-
-/* ティッカーの説明 */
-.ticker-note {
-  position: fixed;
-  top: 3.6em;
-  left: 0;
-  width: 100%;
-  font-size: 0.75rem;
-  text-align: center;
-  animation: rainbow 1s linear infinite;
-  font-weight: bold;
-  z-index: 9;
-}
-
-@keyframes rainbow {
-  0% { color: red; }
-  16% { color: orange; }
-  32% { color: yellow; }
-  48% { color: green; }
-  64% { color: blue; }
-  80% { color: indigo; }
-  100% { color: violet; }
+.content.liquid-glass,
+.menu.liquid-glass,
+.site-footer.liquid-glass {
+  border-radius: 18px;
 }
 
 @keyframes blink {
@@ -130,12 +96,25 @@ body {
 /* 天気と時刻の表示 */
 .weather-display {
   position: fixed;
-  top: 2em;
+  top: 1em;
   right: 1em;
   font-size: 1.2rem;
   color: #111;
   z-index: 1000;
   font-weight: bold;
+}
+
+.site-footer {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 1000;
+  padding: 0.45rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: #000000;
+  pointer-events: none;
 }
 
 /* 中央メニュー */

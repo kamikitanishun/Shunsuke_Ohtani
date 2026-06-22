@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body.works-page {
+      height: auto;
+      min-height: 100vh;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .works-content {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 50vw;
+      max-width: 960px;
+      height: auto;
+      margin: 7rem auto 5rem;
+      text-align: left;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .works-content h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      margin-bottom: 2.25rem;
+    }
+
+    .work-item {
+      width: 100%;
+      border-top: 1px solid #000000;
+      padding: 1.6rem 0 1.7rem;
+    }
+
+    .work-item h2 {
+      font-size: 1.6rem;
+      line-height: 1.25;
+      margin-bottom: 0.45rem;
+    }
+
+    .work-item h2 a {
+      --underline-origin: 50%;
+      color: inherit;
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .work-item h2 a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.08em;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: var(--underline-origin) 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .work-item h2 a:hover {
+      color: #c0c0c0;
+    }
+
+    .work-item h2 a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .work-meta {
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #000000;
+    }
+
+    .work-detail {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 0.45rem 1.2rem;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #000000;
+    }
+
+    .work-detail dt,
+    .work-detail dd {
+      margin: 0;
+    }
+
+    .work-detail dt {
+      color: #555555;
+    }
+
+    .work-item h2,
+    .work-meta,
+    .work-detail dd {
+      overflow-wrap: anywhere;
+    }
+
+    .works-content .back-link {
+      align-self: center;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .works-content {
+        width: min(88vw, 860px);
+      }
+
+      .works-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .work-detail {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+      }
+
+      .work-detail dt {
+        margin-top: 0.45rem;
+      }
+    }
+  </style>
+</head>
+<body class="works-page">
+
+  <canvas id="visualizer"></canvas>
+
+  <!-- 天気と時刻の表示 -->
+  <div id="weather-info" class="weather-display">読み込み中...</div>
+  <script src="weather.js"></script>
+
+  <!-- Worksセクション -->
+  <div class="content works-content liquid-glass">
+    <h1>Works</h1>
+
+    <article class="work-item">
+      <h2><a href="https://ivrc.net/archive/%E8%B6%85%E6%AC%A1%E5%85%83vr%E9%87%8E%E7%90%83-2022/" target="_blank" rel="noopener noreferrer">超次元VR野球</a></h2>
+      <p class="work-meta">2022 / IVRC2022 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>作品内オブジェクトの制作、PV動画制作</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Unity、Capcut</dd>
+        <dt>Outcome</dt>
+        <dd>IVRC2022 SEED STAGE、学園祭</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2>工学院大学八王子キャンパス 旧図書館の再現</h2>
+      <p class="work-meta">2023 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>オブジェクトの制作と配置</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Fusion 360、Revit、Twinmotion</dd>
+        <dt>Outcome</dt>
+        <dd>オープンキャンパス、学園祭</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2><a href="https://ivrc.net/archive/%E3%81%9D%E3%82%8C%E3%81%84%E3%81%91%EF%BC%81%E3%83%A0%E3%82%B5%E3%82%B5%E3%83%93%E4%BA%BA%E9%96%932023/" target="_blank" rel="noopener noreferrer">それいけ！ムササビ人間</a></h2>
+      <p class="work-meta">2023 / IVRC2023 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>傾き検知スクリプトとマップ制作</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Unity</dd>
+        <dt>Outcome</dt>
+        <dd>IVRC2023 SEED STAGE、学園祭</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2><a href="https://ivrc.net/archive/%e3%82%b0%e3%83%a9%e3%83%93%e3%83%86%e3%82%a3%e3%83%bb%e3%83%91%e3%83%a9%e3%83%89%e3%83%83%e3%82%af%e3%82%b92024/" target="_blank" rel="noopener noreferrer">グラビティ・パラドックス</a></h2>
+      <p class="work-meta">2024 / IVRC2024 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>オブジェクトの制作、モーションベースの作成、PV動画用CGの制作、機材輸送マネジメント</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Arduino、電子工作</dd>
+        <dt>Outcome</dt>
+        <dd>IVRC2024 SEED STAGE・LEAP STAGE、学園祭、けいはんな万博2025 ロボット・アバター・ICTフェス</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2>けいはんなプラザホテル 防災VR</h2>
+      <p class="work-meta">2025 / 大阪・関西万博 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>CGレンダリング、動画編集</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Premiere Pro</dd>
+        <dt>Outcome</dt>
+        <dd>大阪・関西万博 関西パビリオン、けいはんな万博2025 ロボット・アバター・ICTフェス</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2>空中散歩</h2>
+      <p class="work-meta">2025 / 大阪・関西万博 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>企画立案、コンテンツ内文章制作・写真撮影、オブジェクト制作</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Illustrator、360度カメラ、一眼レフ</dd>
+        <dt>Outcome</dt>
+        <dd>大阪・関西万博 TEAM EXPOパビリオン</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2>けいはんな空中散歩VR</h2>
+      <p class="work-meta">2025 / 大阪・関西万博 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>企画立案、コンテンツ内文章制作・写真撮影、オブジェクト制作</dd>
+        <dt>Tools</dt>
+        <dd>Blender、Illustrator、360度カメラ、一眼レフ</dd>
+        <dt>Outcome</dt>
+        <dd>大阪・関西万博 関西パビリオン</dd>
+      </dl>
+    </article>
+
+    <article class="work-item">
+      <h2><a href="https://ivrc.net/archive/%e5%8f%8c%e5%ad%90%e3%81%ae%e3%82%b5%e3%83%b3%e3%82%bf%e3%82%af%e3%83%ad%e3%83%bc%e3%82%b92025/" target="_blank" rel="noopener noreferrer">双子のサンタクロース</a></h2>
+      <p class="work-meta">2025 / IVRC2025 / 工学院大学VRプロジェクト</p>
+      <dl class="work-detail">
+        <dt>Role</dt>
+        <dd>アドバイザー</dd>
+        <dt>Tools</dt>
+        <dd>None</dd>
+        <dt>Outcome</dt>
+        <dd>IVRC2025 SEED STAGE</dd>
+      </dl>
+    </article>
+
+    <a href="index.html" class="back-link">← 戻る</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="visualizer.js"></script>
+  <script>
+    document.querySelectorAll('.work-item h2 a').forEach(link => {
+      link.addEventListener('pointermove', event => {
+        const rect = link.getBoundingClientRect();
+        const origin = ((event.clientX - rect.left) / rect.width) * 100;
+        link.style.setProperty('--underline-origin', `${origin}%`);
+      });
+
+      link.addEventListener('pointerleave', () => {
+        link.style.setProperty('--underline-origin', '50%');
+      });
+    });
+  </script>
+  <script src="bgm.js" defer></script>
+</body>
+</html>

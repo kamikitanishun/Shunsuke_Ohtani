@@ -12,17 +12,24 @@ fetch('links.json')
       a.className = 'link-content';
       a.href = link.url;
       a.target = '_blank';
-
-      const icon = document.createElement('img');
-      icon.src = link.icon;
-      icon.alt = link.title;
-      icon.className = 'icon';
+      a.rel = 'noopener noreferrer';
 
       const title = document.createElement('span');
+      title.className = 'link-title';
       title.textContent = link.title;
 
-      a.appendChild(icon);
+      const description = document.createElement('span');
+      description.className = 'link-description';
+
+      const prefix = link.description.replace(link.accent, '').trimEnd();
+      const accent = document.createElement('span');
+      accent.className = `link-accent link-accent-${link.accentType}`;
+      accent.textContent = link.accent;
+
+      description.append(prefix, ' ', accent);
+
       a.appendChild(title);
+      a.appendChild(description);
       linkItem.appendChild(a);
       container.appendChild(linkItem);
     });

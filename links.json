@@ -1,18 +1,24 @@
 [
     {
-      "title": "Yuzusoft",
-      "url": "https://www.yuzu-soft.com/",
-      "icon": "img/yuzusoft.png"
-    },
-    {
-      "title": "@kamiki_tanishun",
-      "url": "https://x.com/kamiki_tanishun",
-      "icon": "img/logo-black.png"
+      "title": "ResearchGate",
+      "description": "check out my papers",
+      "accent": "papers",
+      "accentType": "papers",
+      "url": "https://www.researchgate.net/profile/Shunsuke-Ohtani?ev=hdr_xprf"
     },
     {
       "title": "GitHub",
-      "url": "https://github.com/kamikitanishun",
-      "icon": "img/github-mark.png"
+      "description": "check out my codes",
+      "accent": "codes",
+      "accentType": "codes",
+      "url": "https://github.com/kamikitanishun"
+    },
+    {
+      "title": "SoundCloud",
+      "description": "check out my tunes",
+      "accent": "tunes",
+      "accentType": "tunes",
+      "url": "https://soundcloud.com/gk4tyrk70txe"
     }
   ]
   
