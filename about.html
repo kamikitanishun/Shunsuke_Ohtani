@@ -7,58 +7,23 @@
   <link rel="stylesheet" href="style.css">
   <style>
 
-    .content {
-      height: calc(100vh - 2em);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 1.2s ease-in forwards;
-      animation-delay: 0.5s;
-    }
-
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
 
     p {
-      max-width: 600px;
+      max-width: 1200px;
       margin: 0 auto 2rem;
       font-size: 1.1rem;
       line-height: 1.6;
-    }
-
-    a.back-link {
-      font-size: 1rem;
-      text-decoration: none;
-      color: #000;
-      border: 1px solid #000;
-      padding: 0.5em 1em;
-      border-radius: 0.5em;
-      transition: background 0.3s ease;
-    }
-
-    a.back-link:hover {
-      background: #000;
-      color: #fff;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      color: #333;
     }
   </style>
 </head>
-
-
-
 <body>
 
-    <canvas id="visualizer"></canvas>
+  <canvas id="visualizer"></canvas>
 
   <!-- DLsiteランキング表示 -->
   <div class="ticker-wrapper">
@@ -77,14 +42,15 @@
   <div class="content">
     <h1>About</h1>
     <p>
-      このサイトはポートフォリオページです。<br>
-      現在は主にWeb制作、Arduino、音声作品ランキングの表示などを行っています。<br>
-      シンプルで遊び心のあるデザインを目指しています。
+      大谷駿介<br>
+      高校より、マルチメディアにおいて圧倒的な才能と創造力を見せ、音楽・映像の両方で爪痕を残してきた。<br>
+      大学では情報学を専攻する一方、ハードウェアや通信といった工学分野もカバーしている。
     </p>
     <a href="index.html" class="back-link">← 戻る</a>
   </div>
 
   <script src="script.js"></script>
   <script src="visualizer.js"></script>
+  <script src="bgm.js" defer></script>
 </body>
 </html>
