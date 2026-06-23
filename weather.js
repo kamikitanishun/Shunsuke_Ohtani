@@ -1,5 +1,6 @@
 const WEATHER_CACHE_KEY = "weatherData";
 const WEATHER_CACHE_MAX_AGE = 10 * 60 * 1000;
+let weatherClockTimer = null;
 
 const DEFAULT_LOCATION = {
   city: "東京",
@@ -62,10 +63,19 @@ function getSavedWeather() {
   }
 }
 
-function saveWeather(display) {
+function isValidSavedWeather(saved) {
+  return saved
+    && typeof saved.city === "string"
+    && typeof saved.timezone === "string"
+    && typeof saved.weatherEmoji === "string"
+    && Number.isFinite(saved.temperature)
+    && Number.isFinite(saved.timestamp);
+}
+
+function saveWeather(weather) {
   try {
     localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({
-      display,
+      ...weather,
       timestamp: Date.now()
     }));
   } catch (error) {
@@ -172,6 +182,30 @@ function getWeatherEmoji(weatherCode, isDay) {
   return emoji === "☀️" && isDay === 0 ? "✨" : emoji;
 }
 
+function buildWeatherDisplay(weather) {
+  const localTime = formatLocalTime(weather.timezone);
+  return `${weather.city} ${localTime} ${weather.weatherEmoji} ${weather.temperature}°C`;
+}
+
+function scheduleWeatherClock() {
+  window.clearTimeout(weatherClockTimer);
+
+  const now = new Date();
+  const delay = ((60 - now.getSeconds()) * 1000) - now.getMilliseconds() + 50;
+  weatherClockTimer = window.setTimeout(() => fetchWeather(), Math.max(delay, 1000));
+}
+
+function renderWeather(weather) {
+  const weatherInfo = document.getElementById("weather-info");
+
+  if (!weatherInfo) {
+    return;
+  }
+
+  weatherInfo.textContent = buildWeatherDisplay(weather);
+  scheduleWeatherClock();
+}
+
 async function fetchWeather(forceRefresh = false) {
   const weatherInfo = document.getElementById("weather-info");
 
@@ -182,24 +216,27 @@ async function fetchWeather(forceRefresh = false) {
   const saved = getSavedWeather();
   const now = Date.now();
 
-  if (!forceRefresh && saved && now - saved.timestamp < WEATHER_CACHE_MAX_AGE) {
-    weatherInfo.textContent = saved.display;
+  if (!forceRefresh && isValidSavedWeather(saved) && now - saved.timestamp < WEATHER_CACHE_MAX_AGE) {
+    renderWeather(saved);
     return;
   }
 
   try {
     const location = await getLocation();
     const currentWeather = await getCurrentWeather(location);
-    const localTime = formatLocalTime(location.timezone);
-    const weatherEmoji = getWeatherEmoji(currentWeather.weather_code, currentWeather.is_day);
-    const temperature = Math.round(currentWeather.temperature_2m);
-    const display = `${location.city} ${localTime} ${weatherEmoji} ${temperature}°C`;
+    const weather = {
+      city: location.city,
+      timezone: location.timezone,
+      weatherEmoji: getWeatherEmoji(currentWeather.weather_code, currentWeather.is_day),
+      temperature: Math.round(currentWeather.temperature_2m)
+    };
 
-    weatherInfo.textContent = display;
-    saveWeather(display);
+    renderWeather(weather);
+    saveWeather(weather);
   } catch (error) {
     console.error("天気情報の取得に失敗:", error);
     weatherInfo.textContent = "天気情報を取得できません";
+    scheduleWeatherClock();
   }
 }
 

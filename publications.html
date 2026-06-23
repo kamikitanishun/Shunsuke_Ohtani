@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body.publications-page {
+      height: auto;
+      min-height: 100vh;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .publications-content {
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 50vw;
+      max-width: 960px;
+      height: auto;
+      margin: 7rem auto 5rem;
+      text-align: left;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .publications-content h1 {
+      font-size: 3rem;
+      line-height: 1.12;
+      margin-bottom: 2.25rem;
+    }
+
+    .publication-item {
+      width: 100%;
+      border-top: 1px solid #000000;
+      padding: 1.6rem 0 1.7rem;
+    }
+
+    .publication-item h2 {
+      font-size: 1.45rem;
+      line-height: 1.35;
+      margin-bottom: 0.65rem;
+      overflow-wrap: anywhere;
+    }
+
+    .publication-item h2 a {
+      --underline-origin: 50%;
+      color: inherit;
+      display: inline-block;
+      max-width: 100%;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .publication-item h2 a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.08em;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: var(--underline-origin) 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .publication-item h2 a:hover {
+      color: #c0c0c0;
+    }
+
+    .publication-item h2 a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .publication-authors,
+    .publication-venue {
+      margin: 0;
+      color: #000000;
+      overflow-wrap: anywhere;
+    }
+
+    .publication-authors {
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .publication-venue {
+      margin-top: 0.45rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #555555;
+    }
+
+    .publications-content .back-link {
+      align-self: center;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .publications-content {
+        width: min(88vw, 860px);
+      }
+
+      .publications-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .publication-item h2 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body class="publications-page">
+
+  <canvas id="visualizer"></canvas>
+
+  <!-- 天気と時刻の表示 -->
+  <div id="weather-info" class="weather-display">読み込み中...</div>
+  <script src="weather.js"></script>
+
+  <!-- Publicationsセクション -->
+  <div class="content publications-content liquid-glass">
+    <h1>Publications</h1>
+
+    <article class="publication-item">
+      <h2><a href="https://conference.vrsj.org/ac2022/program/doc/1A3-07.pdf" target="_blank" rel="noopener noreferrer">超次元VR野球</a></h2>
+      <p class="publication-authors">小倉綾介，風間星國斗，田中大久，大塚将吾，寺田ことね，大谷駿介，小出悠太，尾崎貴文，伊藤彰吾，齊藤慎人，清家大翔，百瀬友稀</p>
+      <p class="publication-venue">第27回日本バーチャルリアリティ学会大会，1A3-07，2022.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://conference.vrsj.org/ac2023/program/doc/IVRC-13.pdf" target="_blank" rel="noopener noreferrer">それいけ！ムササビ人間</a></h2>
+      <p class="publication-authors">山下 朋也，大塚 広太，宮島 裕大，瀧澤 力仁，松岡 祐汰，内野 蒼平，莊司 大樹，小倉 綾介，大谷 駿介</p>
+      <p class="publication-venue">第28回日本バーチャルリアリティ学会大会，IVRC-03，2023.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://conference.vrsj.org/ac2024/program/doc/IVRC-11.pdf" target="_blank" rel="noopener noreferrer">グラビティ・パラドックス</a></h2>
+      <p class="publication-authors">大塚 広太，山下 朋也，松岡 祐汰，内野 蒼平，宮島 裕大，竹島 光一，小倉 綾介，大谷 駿介</p>
+      <p class="publication-venue">第29回日本バーチャルリアリティ学会大会，IVRC-11，2024.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2>Gravity Paradox -Escape from the Bizarre Mansion by Controlling Gravity-</h2>
+      <p class="publication-authors">Shunsuke Ohtani, Kouichi Takeshima, Ryosuke Ogura, Tomoya Yamashita, Kota Ohtsuka, Souhei Uchino, Kazuki Hashimoto, Taiki Kaite, and Ryouma Ito</p>
+      <p class="publication-venue">APMAR2024，5-3，2024.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://www.interaction-ipsj.org/proceedings/2025/data/pdf/1A-15.pdf" target="_blank" rel="noopener noreferrer">VR空間における映像と前庭感覚提示の組み合わせによる傾斜の提示効果の実験的調査 -IVRC参加作品「グラビティ・パラドックス」での事例-</a></h2>
+      <p class="publication-authors">小倉 綾介，大谷 駿介，竹島 光一，北川 大智，牛田 啓太</p>
+      <p class="publication-venue">情報処理学会 インタラクション2025，1A-15，2025.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2>ビビりドッジ</h2>
+      <p class="publication-authors">大谷 駿介，對島 健太，杉窪 真幸，牛田 啓太</p>
+      <p class="publication-venue">ヒューマンインタフェースシンポジウム 2025，1S-17，pp. 166-168，2025.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://conference.vrsj.org/ac2025/program/doc/IVRC-16.pdf" target="_blank" rel="noopener noreferrer">双子のサンタクロース</a></h2>
+      <p class="publication-authors">小濵 誠樹，山田 晄生，北川 大智，鹿野 滉人，竹島 光一，大谷 駿介</p>
+      <p class="publication-venue">第30回日本バーチャルリアリティ学会大会，IVRC-16，2025.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://dl.acm.org/doi/pdf/10.1145/3756884.3768406" target="_blank" rel="noopener noreferrer">An Experimental Study of Tilt Sensation Displayed with a Combination of Visual and Physical Tilt: A Case of an Interactive VR Work "Gravity Paradox"</a></h2>
+      <p class="publication-authors">Shunsuke Otani, Ryosuke Ogura, Koichi Takeshima, Daichi Kitagawa, and Keita Ushida</p>
+      <p class="publication-venue">In Proceedings of the 2025 31st ACM Symposium on Virtual Reality Software and Technology (VRST '25)，Article 116，2025.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://www.ieice.org/tokyo/gakusei/activity/kenkyuu-happyoukai/happyou-ronbun/31/pdf/126.pdf" target="_blank" rel="noopener noreferrer">生活音をDJミックスして楽しく一日を振り返るためのクリップ作成システム</a></h2>
+      <p class="publication-authors">大谷 駿介，牛田 啓太</p>
+      <p class="publication-venue">電子情報通信学会 東京支部 学生発表会，126，2026.</p>
+    </article>
+
+    <a href="index.html" class="back-link">← 戻る</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="visualizer.js"></script>
+  <script>
+    document.querySelectorAll('.publication-item h2 a').forEach(link => {
+      link.addEventListener('pointermove', event => {
+        const rect = link.getBoundingClientRect();
+        const origin = ((event.clientX - rect.left) / rect.width) * 100;
+        link.style.setProperty('--underline-origin', `${origin}%`);
+      });
+
+      link.addEventListener('pointerleave', () => {
+        link.style.setProperty('--underline-origin', '50%');
+      });
+    });
+  </script>
+  <script src="bgm.js" defer></script>
+</body>
+</html>

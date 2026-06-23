@@ -104,6 +104,13 @@ body {
   font-weight: bold;
 }
 
+@media (max-width: 700px) {
+  .weather-display {
+    position: absolute;
+    font-size: 0.95rem;
+  }
+}
+
 .site-footer {
   position: fixed;
   left: 50%;
