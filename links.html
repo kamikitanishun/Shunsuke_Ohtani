@@ -28,13 +28,9 @@
       padding-bottom: 5rem;
     }
 
-    .links-content h1 {
+    .links-content .page-header h1 {
       font-size: 3rem;
       line-height: 1.12;
-      width: 100%;
-      margin-bottom: 2.25rem;
-      padding-bottom: 0.7rem;
-      border-bottom: 1px solid #000000;
     }
 
     .link-item {
@@ -116,7 +112,7 @@
         width: min(88vw, 860px);
       }
 
-      .links-content h1 {
+      .links-content .page-header h1 {
         font-size: 2.4rem;
       }
 
@@ -144,7 +140,14 @@
 
 <!-- 中央リンク一覧 -->
   <div class="content links-content liquid-glass">
-    <h1>Links</h1>
+    <header class="page-header">
+      <h1>Links</h1>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="about.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="publications.html">Publications</a>
+      </nav>
+    </header>
     <div id="links-container">読み込み中...</div>
     <a href="index.html" class="back-link">← 戻る</a>
   </div>
@@ -171,7 +174,6 @@
   </script>
   <script src="script.js"></script>
   <script src="visualizer.js"></script>
-  <script src="bgm.js" defer></script>
 
 </body>
 </html>

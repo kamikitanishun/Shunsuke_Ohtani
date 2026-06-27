@@ -28,16 +28,20 @@
       padding-bottom: 5rem;
     }
 
-    .publications-content h1 {
+    .publications-content .page-header h1 {
       font-size: 3rem;
       line-height: 1.12;
-      margin-bottom: 2.25rem;
     }
 
     .publication-item {
       width: 100%;
       border-top: 1px solid #000000;
       padding: 1.6rem 0 1.7rem;
+    }
+
+    .publication-item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
     }
 
     .publication-item h2 {
@@ -107,7 +111,7 @@
         width: min(88vw, 860px);
       }
 
-      .publications-content h1 {
+      .publications-content .page-header h1 {
         font-size: 2.4rem;
       }
 
@@ -127,7 +131,14 @@
 
   <!-- Publicationsセクション -->
   <div class="content publications-content liquid-glass">
-    <h1>Publications</h1>
+    <header class="page-header">
+      <h1>Publications</h1>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="about.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="links.html">Links</a>
+      </nav>
+    </header>
 
     <article class="publication-item">
       <h2><a href="https://conference.vrsj.org/ac2022/program/doc/1A3-07.pdf" target="_blank" rel="noopener noreferrer">超次元VR野球</a></h2>
@@ -201,6 +212,5 @@
       });
     });
   </script>
-  <script src="bgm.js" defer></script>
 </body>
 </html>

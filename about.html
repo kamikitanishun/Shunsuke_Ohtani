@@ -28,10 +28,19 @@
       padding-bottom: 5rem;
     }
 
-    .about-content h1 {
+    .about-content .page-header h1 {
       font-size: 3rem;
       line-height: 1.12;
-      margin-bottom: 1.75rem;
+    }
+
+    .about-profile {
+      width: 100%;
+    }
+
+    .about-content .about-name {
+      margin-bottom: 1.1rem;
+      font-size: 2rem;
+      line-height: 1.25;
     }
 
     .about-content h2 {
@@ -41,6 +50,172 @@
       margin: 2.5rem 0 1rem;
       padding-bottom: 0.55rem;
       border-bottom: 1px solid #000000;
+    }
+
+    .skills-accordion {
+      width: 100%;
+      margin-top: 2.5rem;
+    }
+
+    .skills-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0 0 1rem;
+      padding: 0 0 0.55rem;
+      border: 0;
+      border-bottom: 1px solid #000000;
+      background: transparent;
+      color: #000000;
+      font: inherit;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .skills-chevron {
+      position: relative;
+      flex: 0 0 1rem;
+      width: 1rem;
+      height: 1rem;
+      transform-origin: 50% 50%;
+      transition: transform 680ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .skills-chevron::before,
+    .skills-chevron::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.55rem;
+      height: 2px;
+      background: #000000;
+      transform-origin: 50% 50%;
+    }
+
+    .skills-chevron::before {
+      transform: translate(-86%, -50%) rotate(45deg);
+    }
+
+    .skills-chevron::after {
+      transform: translate(-14%, -50%) rotate(-45deg);
+    }
+
+    .skills-accordion.is-open .skills-chevron {
+      transform: rotate(180deg);
+    }
+
+    .skills-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 680ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .skills-accordion.is-open .skills-panel {
+      grid-template-rows: 1fr;
+    }
+
+    .skills-panel-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .skills-groups {
+      display: grid;
+      gap: 1.6rem;
+      padding-top: 0.2rem;
+    }
+
+    .skills-group {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .skills-group-title {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .skills-category {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .skills-category-title {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #333333;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .skills-tags li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      padding: 0.28rem 0.62rem;
+      border: 1px solid rgba(0, 0, 0, 0.24);
+      border-radius: 999px;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: #000000;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .skills-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.7rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0.15rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .skills-legend li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: rgba(0, 0, 0, 0.74);
+    }
+
+    .skills-legend-marker {
+      width: 0.75rem;
+      height: 0.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 50%;
+    }
+
+    .skills-tags .skill-level-proficient,
+    .skills-legend-marker.skill-level-proficient {
+      border-color: rgba(174, 92, 84, 0.42);
+      background: rgba(229, 143, 135, 0.28);
+    }
+
+    .skills-tags .skill-level-working,
+    .skills-legend-marker.skill-level-working {
+      border-color: rgba(167, 134, 48, 0.46);
+      background: rgba(238, 207, 116, 0.34);
+    }
+
+    .skills-tags .skill-level-basic,
+    .skills-legend-marker.skill-level-basic {
+      border-color: rgba(72, 132, 91, 0.48);
+      background: rgba(137, 191, 153, 0.34);
     }
 
     .about-content p {
@@ -71,8 +246,20 @@
         width: min(88vw, 860px);
       }
 
-      .about-content h1 {
+      .about-content .page-header h1 {
         font-size: 2.4rem;
+      }
+
+      .about-content .about-name {
+        font-size: 1.7rem;
+      }
+
+      .skills-toggle {
+        font-size: 1.8rem;
+      }
+
+      .skills-tags li {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -87,12 +274,101 @@
 
   <!-- Aboutセクション -->
   <div class="content about-content liquid-glass">
-    <h1>Shunsuke Otani<br>大谷 駿介</h1>
-    <p>2003年生まれ</p>
-    <p>工学院大学大学院 工学研究科 電気・電子工学専攻 修士課程在学中。情報メディア研究室にて、CHI(コンピュータヒューマンインタフェース)を研究。テーマは「DJを身近に・直感的にするインタフェースの開発」。</p>
-    <p>職業ではない、趣味としてのDJを広めることをビジョンとしている。</p>
-    <p>高校時代は写真部に所属し部長を務め、芸術的な感性を磨いた。</p>
-    <p>大学では工学院大学VRプロジェクトの主力メンバとして、数々のVRコンテンツの制作、大阪・関西万博などへのイベント出展を経験した。</p>
+    <header class="page-header">
+      <h1>About</h1>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="works.html">Works</a>
+        <a href="publications.html">Publications</a>
+        <a href="links.html">Links</a>
+      </nav>
+    </header>
+    <div class="about-profile">
+      <p class="about-name">Shunsuke Otani<br>大谷 駿介</p>
+      <p>2003年生まれ</p>
+      <p>工学院大学大学院 工学研究科 電気・電子工学専攻 修士課程在学中。情報メディア研究室にて、CHI(コンピュータヒューマンインタフェース)を研究。テーマは「DJを身近に・直感的にするインタフェースの開発」。</p>
+      <p>職業ではない、趣味としてのDJを広めることをビジョンとしている。</p>
+      <p>高校時代は写真部に所属し部長を務め、芸術的な感性を磨いた。</p>
+      <p>大学では工学院大学VRプロジェクトの主力メンバとして、数々のVRコンテンツの制作、大阪・関西万博などへのイベント出展を経験した。</p>
+    </div>
+
+    <section class="skills-accordion" aria-labelledby="skills-heading">
+      <button class="skills-toggle" type="button" id="skills-heading" aria-expanded="false" aria-controls="skills-panel">
+        <span>Skills</span>
+        <span class="skills-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="skills-panel" id="skills-panel" role="region" aria-labelledby="skills-heading">
+        <div class="skills-panel-inner">
+          <div class="skills-groups">
+            <ul class="skills-legend" aria-label="Skill level legend">
+              <li><span class="skills-legend-marker skill-level-proficient" aria-hidden="true"></span>Proficient: 赤</li>
+              <li><span class="skills-legend-marker skill-level-working" aria-hidden="true"></span>Working: 黄</li>
+              <li><span class="skills-legend-marker skill-level-basic" aria-hidden="true"></span>Basic: 緑</li>
+            </ul>
+
+            <section class="skills-group" aria-labelledby="software-skills-heading">
+              <h3 class="skills-group-title" id="software-skills-heading">Software</h3>
+
+              <section class="skills-category" aria-labelledby="software-av-heading">
+                <h4 class="skills-category-title" id="software-av-heading">Audio / Visual</h4>
+                <ul class="skills-tags">
+                  <li class="skill-level-proficient">Ableton Live</li>
+                  <li class="skill-level-proficient">Rekordbox</li>
+                  <li class="skill-level-basic">Max</li>
+                  <li class="skill-level-basic">Touch Designer</li>
+                  <li class="skill-level-basic">Adobe Audition</li>
+                  <li class="skill-level-basic">Adobe Premiere Pro</li>
+                  <li class="skill-level-working">Adobe Photoshop</li>
+                  <li class="skill-level-working">Adobe Illustrator</li>
+                  <li class="skill-level-working">Adobe Lightroom</li>
+                </ul>
+              </section>
+
+              <section class="skills-category" aria-labelledby="software-3d-heading">
+                <h4 class="skills-category-title" id="software-3d-heading">Modeling</h4>
+                <ul class="skills-tags">
+                  <li class="skill-level-proficient">Blender</li>
+                  <li class="skill-level-working">Autodesk Fusion360</li>
+                  <li class="skill-level-basic">Autodesk Revit</li>
+                  <li class="skill-level-working">Twinmotion</li>
+                </ul>
+              </section>
+
+              <section class="skills-category" aria-labelledby="software-dev-heading">
+                <h4 class="skills-category-title" id="software-dev-heading">Development</h4>
+                <ul class="skills-tags">
+                  <li class="skill-level-proficient">Unity (C#)</li>
+                  <li class="skill-level-proficient">C</li>
+                  <li class="skill-level-working">Python</li>
+                  <li class="skill-level-basic">Java</li>
+                  <li class="skill-level-proficient">Arduino</li>
+                </ul>
+              </section>
+            </section>
+
+            <section class="skills-group" aria-labelledby="hardware-skills-heading">
+              <h3 class="skills-group-title" id="hardware-skills-heading">Hardware</h3>
+
+              <section class="skills-category" aria-labelledby="hardware-av-heading">
+                <h4 class="skills-category-title" id="hardware-av-heading">Audio / Visual</h4>
+                <ul class="skills-tags">
+                  <li class="skill-level-proficient">Camera (Canon EOS RP etc.)</li>
+                  <li class="skill-level-proficient">DDJ-FLX4</li>
+                  <li class="skill-level-basic">Akai APC 64</li>
+                </ul>
+              </section>
+
+              <section class="skills-category" aria-labelledby="hardware-prototyping-heading">
+                <h4 class="skills-category-title" id="hardware-prototyping-heading">Development</h4>
+                <ul class="skills-tags">
+                  <li class="skill-level-proficient">Arduino</li>
+                  <li class="skill-level-working">Raspberry Pi</li>
+                </ul>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <h2>Career</h2>
     <ul class="about-list">
@@ -117,6 +393,14 @@
 
   <script src="script.js"></script>
   <script src="visualizer.js"></script>
-  <script src="bgm.js" defer></script>
+  <script>
+    const skillsAccordion = document.querySelector('.skills-accordion');
+    const skillsToggle = document.querySelector('.skills-toggle');
+
+    skillsToggle.addEventListener('click', () => {
+      const isOpen = skillsAccordion.classList.toggle('is-open');
+      skillsToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
 </body>
 </html>

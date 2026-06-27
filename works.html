@@ -28,16 +28,20 @@
       padding-bottom: 5rem;
     }
 
-    .works-content h1 {
+    .works-content .page-header h1 {
       font-size: 3rem;
       line-height: 1.12;
-      margin-bottom: 2.25rem;
     }
 
     .work-item {
       width: 100%;
       border-top: 1px solid #000000;
       padding: 1.6rem 0 1.7rem;
+    }
+
+    .work-item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
     }
 
     .work-item h2 {
@@ -118,7 +122,7 @@
         width: min(88vw, 860px);
       }
 
-      .works-content h1 {
+      .works-content .page-header h1 {
         font-size: 2.4rem;
       }
 
@@ -143,7 +147,14 @@
 
   <!-- Worksセクション -->
   <div class="content works-content liquid-glass">
-    <h1>Works</h1>
+    <header class="page-header">
+      <h1>Works</h1>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="about.html">About</a>
+        <a href="publications.html">Publications</a>
+        <a href="links.html">Links</a>
+      </nav>
+    </header>
 
     <article class="work-item">
       <h2><a href="https://ivrc.net/archive/%E8%B6%85%E6%AC%A1%E5%85%83vr%E9%87%8E%E7%90%83-2022/" target="_blank" rel="noopener noreferrer">超次元VR野球</a></h2>
@@ -243,7 +254,7 @@
         <dt>Role</dt>
         <dd>制作主導、コンテンツ制作、オブジェクト制作</dt>
         <dt>Tools</dt>
-        <dd>Blender, Unity, Bitalino, Python</dd>
+        <dd>Blender、Unity、Bitalino、Python</dd>
         <dt>Outcome</dt>
         <dd>SICHI2025</dd>
       </dl>
@@ -280,6 +291,5 @@
       });
     });
   </script>
-  <script src="bgm.js" defer></script>
 </body>
 </html>
