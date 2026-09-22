@@ -26,6 +26,7 @@
       text-align: left;
       padding-top: 2rem;
       padding-bottom: 5rem;
+      counter-reset: publication;
     }
 
     .publications-content .page-header h1 {
@@ -37,6 +38,26 @@
       width: 100%;
       border-top: 1px solid #000000;
       padding: 1.6rem 0 1.7rem;
+      display: grid;
+      grid-template-columns: 2.4rem 1fr;
+      column-gap: 1rem;
+      align-items: baseline;
+      counter-increment: publication;
+    }
+
+    .publication-item > * {
+      grid-column: 2;
+    }
+
+    .publication-item::before {
+      content: counter(publication) ".";
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 1.05rem;
+      line-height: 1.35;
+      color: #555555;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
     }
 
     .publication-item:first-of-type {
@@ -115,8 +136,17 @@
         font-size: 2.4rem;
       }
 
+      .publication-item {
+        grid-template-columns: 1.9rem 1fr;
+        column-gap: 0.7rem;
+      }
+
       .publication-item h2 {
         font-size: 1.25rem;
+      }
+
+      .publication-item::before {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -192,6 +222,36 @@
       <h2><a href="https://www.ieice.org/tokyo/gakusei/activity/kenkyuu-happyoukai/happyou-ronbun/31/pdf/126.pdf" target="_blank" rel="noopener noreferrer">生活音をDJミックスして楽しく一日を振り返るためのクリップ作成システム</a></h2>
       <p class="publication-authors">大谷 駿介，牛田 啓太</p>
       <p class="publication-venue">電子情報通信学会 東京支部 学生発表会，126，2026.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://www.conference.vrsj.org/ac2026/program/doc/2F1-09.pdf" target="_blank" rel="noopener noreferrer">VR空間内でペンタブレットを用いたインタフェースの検討</a></h2>
+      <p class="publication-authors">大谷 駿介，對馬 健太，梅田 直輝，牛田 啓太</p>
+      <p class="publication-venue">第31回日本バーチャルリアリティ学会大会，2F1-09，2026.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2><a href="https://www.conference.vrsj.org/ac2026/program/doc/4F2-06.pdf" target="_blank" rel="noopener noreferrer">VR 空間における左右方向への傾斜の映像と前庭感覚提示の組み合わせの効果に関する実験的調査</a></h2>
+      <p class="publication-authors">竹島 光一，山下 朋也，小倉 綾介，大谷 駿介，牛田 啓太</p>
+      <p class="publication-venue">第31回日本バーチャルリアリティ学会大会，4F2-06，2026.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2>脳血流量を刺激によって増大させ集中力を高める調査と実践</h2>
+      <p class="publication-authors">山下 朋也，宮島 裕大，大谷 駿介，竹島 光一，牛田 啓太</p>
+      <p class="publication-venue">ヒューマンインタフェースシンポジウム 2026，SC-06，2026.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2>エキサイト！ 一人DJ</h2>
+      <p class="publication-authors">大谷 駿介，山下 朋也，牛田 啓太</p>
+      <p class="publication-venue">ヒューマンインタフェースシンポジウム 2026，SC-07，2026.</p>
+    </article>
+
+    <article class="publication-item">
+      <h2>邪念0研究所</h2>
+      <p class="publication-authors">竹島 光一，小倉 綾介，大谷 駿介，山下 朋也，田中 久弥，牛田 啓太</p>
+      <p class="publication-venue">ヒューマンインタフェースシンポジウム 2026，SC-24，2026.</p>
     </article>
 
     <a href="index.html" class="back-link">← 戻る</a>
